@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage[left=3cm, right=1.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{pdfpages}
+\usepackage[all]{xy}
+
+\begin{document}
+
+\begin{flushright}
+
+\Large Горелкина \\ РК6-32Б \\ Вариант №4
+
+\end{flushright}
+
+\vspace{\baselineskip}\vspace{\baselineskip}\vspace{\baselineskip}\vspace{\baselineskip}\vspace{\baselineskip}\vspace{\baselineskip}\vspace{\baselineskip}\vspace{\baselineskip}\vspace{\baselineskip}
+
+\begin{center}
+
+\section*{Домашнее задание №4 по курсу теории вероятностей и математической статистики. \\ Генератор случайных чисел. Имитационное моделирование.}
+
+\vspace{\baselineskip}
+\textbf{\large Исходные данные}
+\vspace{\baselineskip}
+
+\begin{tabular}[c]{p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}}
+\textbf{\begin{math}R_1\end{math}} & \textbf{\begin{math}G_1\end{math}} & \textbf{\begin{math}B_1\end{math}} & \textbf{\begin{math}R_2\end{math}} & \textbf{\begin{math}G_2\end{math}} & \textbf{\begin{math}B_2\end{math}} & \textbf{\begin{math}R_3\end{math}} & \textbf{\begin{math}G_3\end{math}} & \textbf{\begin{math}B_3\end{math}} 
+\\[1mm] \hline
+11 & 6 & 8 & 10 & 5 & 10 & 8 & 5 & 6  
+\end{tabular}
+\end{center}
+\newpage
+\noindent\textbf {\largeЗадание 1.} 
+\vspace{\baselineskip}
+\\
+\large Постройте свой генератор с параметрами \begin{math}a = R_1,\ c = G_1,\ X_0 = B_1,\ m = 100\end{math}
+Составьте таблицу элементов
+последовательности до первого повторения, определите период генератора. 
+\vspace{\baselineskip}
+\\
+Постройте свой генератор с рационально выбранными параметрами \begin{math}a = 41, \ c = 53,\ X_0 = B_1,\ m = 100\end{math} Составьте таблицу элементов
+последовательности до первого повторения, убедитесь в достижении
+максимального периода генератора.
+\vspace{\baselineskip}
+\\
+Возьмите первые \begin{math}n = 50\end{math} значений из ранее полученной таблицы. Разбейте отрезок [0, 99] на \begin{math}r = 10\end{math} равных частей [0, 9], [10, 19], …, [90,  99]. Определите число элементов усечённой последовательности \begin{math}n_i\end{math} , попавших в соответствующий диапазон и постройте гистограмму.
+\vspace{\baselineskip}
+\\Требуется определить такое значение уровня значимости, с
+которым можно принять гипотезу о том, что статистическая выборка
+соответствует равномерному распределению. Полученный уровень
+значимости можно будет рассматривать как характеристику качества работы
+генератора случайных чисел, с помощью которого была получена
+статистическая выборка.
+\vspace{\baselineskip}
+\\
+Требуется рассчитать выборочные характеристики (выборочное среднее,
+смещённую и исправленную оценки выборочной дисперсии) для \begin{math}n = 5, 10, 25, 50\end{math}n = 5, 10, 25
+ и сравнить их с соответствующими характеристиками теоретического
+равномерного распределения (математическим ожиданием и дисперсией).
+Результаты свести в таблицу, с указанием величины отклонений от
+теоретических значений.
+\newpage
+\noindent\textbf {\largeРешение}
+\vspace{\baselineskip}
+\\
+По условию \begin{math} \lambda = \displaystyle\frac{1}{T_c}, \ \mu = \displaystyle\frac{1}{T_s}, \ \nu = \displaystyle\frac{60}{T_w}\end{math}. Положим \begin{math}\rho = \displaystyle\frac{\lambda}{\mu}, \ \beta = \displaystyle\frac{\nu}{\mu}\end{math}.
+\vspace{\baselineskip}
+\\
+Рассмотрим общий случай, когда в системе имеется \begin{math}n \end{math} операторов, \begin{math}m \end{math} ячеек в очереди. \\ Вероятность того, что все каналы свободны: \begin{math} P_0 = \left(\displaystyle\sum^n_{k=0} \displaystyle\frac{\rho^k}{ k!} + \displaystyle\frac{\rho^{n}}{n!} \cdot\sum^m_{q=1}\displaystyle\frac{\rho^q}{\displaystyle\prod\limits_{j = 1}^qn + j\beta} \right)^{-1}\end{math}. \\Вероятность отказа: \begin{math}P_{n+m} = \displaystyle\frac{\rho^{n}}{n!} \cdot\displaystyle\frac{\rho^m}{\displaystyle\prod\limits_{j = 1}^mn + j\beta} \cdot P_0\end{math}. \\
+Вероятность существования очереди: \begin{math}P_m = \displaystyle\frac{\rho^{n}}{n!} \cdot\sum^{m-1}_{q=1}\displaystyle\frac{\rho^q}{\displaystyle\prod\limits_{j = 1}^qn + j\beta} \cdot P_0\end{math}.\\
+Математическое ожидание числа занятых операторов: \begin{math}E_n = \displaystyle\sum_{k = 1}^n P_k \cdot k  + \displaystyle\sum_{j = 1}^m P_{n+1} \cdot n \end{math}. \\
+Математическое ожидание длины очереди: \begin{math}E_m = \displaystyle\sum_{k = 1}^m P_{n+1} \cdot k \end{math}. \\
+Коэффициент загрузки операторов \begin{math}K_o = \displaystyle\frac{E_n}{n}\end{math}.
+Коэффициент занятости очереди \begin{math}K_q = \displaystyle\frac{E_m}{m}\end{math}.
+\vspace{\baselineskip}
+\\Решим задание, рассматривая каждую из задач как частный случай, с помощью предельных переходов (в случае бесконечных очередей) будем находить нужные показатели.
+\vspace{\baselineskip}
+\\
+1. Рассмотрим систему без очереди: \begin{math}M_{\lambda}|M_{\mu}|n|0\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F-]}
+    \xymatrix {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &S_3 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_4 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{4\mu}
+    &S_5 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{5\mu}
+    &S_6 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{6\mu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{7\mu}
+    &S_n \ar@/^/[l]^{n\mu}
+    }
+\vspace{\baselineskip}
+\\
+Относиельная пропускная способность \begin{math}Q = 1 - P_n\end{math}, абсолютная пропускная способность \begin{math}A = \lambda \cdot Q\end{math}. Математическое ожидание числа занятых операторов \begin{math}E_n = \displaystyle\frac{A}{\mu}=\displaystyle\frac{\lambda \cdot Q}{\mu} = \rho \cdot (1 - P_n)\end{math}.
+\vspace{\baselineskip}
+\\
+2. Рассмотрим систему с ограниченной очередью:
+\begin{math}M_{\lambda}|M_{\mu}|n|m\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F-]}
+    \xymatrix  {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_n \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+1} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+2} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+m} \ar@/^/[l]^{n\mu}
+    }
+\vspace{\baselineskip}
+\\
+Вероятность существования очереди \begin{math}P_m  = \displaystyle\frac{\rho^n}{n!} \cdot \displaystyle\frac{1 - \rho^m \cdot n^{-m}}{1 - \rho \cdot n} \cdot P_0\end{math}.
+\vspace{\baselineskip}
+\\
+3. Рассмотрим систему без ограничений на длину очереди:
+\begin{math}M_{\lambda}|M_{\mu}|n|\infty\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F-]}
+    \xymatrix  {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_n \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+1} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+m} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &... \ar@/^/[l]^{n\mu}
+    }
+\vspace{\baselineskip}
+\\
+Вероятность отказа \begin{math}P_n = 0\end{math}, тогда \begin{math}Q = 1, \ A = \lambda, \ E_n = \rho, \ K_n = \displaystyle\frac{E_n}{n}\end{math}. Формула для \begin{math}P_0\end{math} получается при предельном переходе \begin{math}m \mapsto \infty\end{math} для \begin{math}P_0\end{math} из предыдущего пункта, то есть \begin{math} P_0 = \left(\displaystyle\sum^n_{k=0} \displaystyle\frac{\rho^k}{ k!} + \displaystyle\frac{\rho^{n+1}}{n \cdot n!} \cdot\displaystyle\frac{1 }{n  - \rho} \right)^{-1}\end{math}. Вероятность существования очереди \begin{math}P_m = \displaystyle\frac{\rho^n}{n!} \cdot \displaystyle\frac{1}{n - \rho} \cdot P_0\end{math}. Математическое ожидание длины очереди \begin{math}E_m = \displaystyle\frac{\rho^{n+1}}{n!} \cdot \displaystyle\frac{1}{(n - \rho)^2} \cdot P_0\end{math}.
+\vspace{\baselineskip}
+\\
+4. Рассмотрим систему без ограничений на длину очереди, учитывающей
+фактор ухода клиентов из очереди: \begin{math}M_{\lambda}|M_{\mu}|n|\infty_\nu\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F]}
+    \xymatrix  {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_n \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+1} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu + \nu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu + 2\nu}
+    &S_{n+m} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu + m\nu}
+    &... \ar@/^/[l]^{ \ \ \ n\mu + (m +1) \nu}
+    }
+\vspace{\baselineskip}
+\\
+\begin{math} P_0 = \displaystyle\lim_{m \to \infty} \left(\sum^n_{k=0} \displaystyle\frac{\rho^k}{ k!} + \displaystyle\frac{\rho^{n}}{n!} \cdot\sum^m_{q=1}\displaystyle\frac{\rho^q}{\displaystyle\prod\limits_{j = 1}^qn + j\beta} \right)^{-1}\end{math}. 
+\vspace{\baselineskip}
+\\
+Все дальнейшие вычисления и посторения графиков реализованы с помощью языка программирования Python и находятся в файлe prob3\_clac.pdf.
+\end{document}
