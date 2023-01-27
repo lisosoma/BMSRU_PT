@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage[left=2cm, right=1cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{pdfpages}
+\usepackage[all]{xy}
+
+\begin{document}
+
+\begin{flushright}
+
+\Large Горелкина \\ РК6-32Б \\ Вариант №4
+
+\end{flushright}
+
+\begin{center}
+
+\section*{Домашнее задание №3 по курсу теории вероятностей и математической статистики. \\ Аналитические модели теории массового обслуживания.}
+
+
+\vspace{\baselineskip}
+\textbf{\large Исходные данные}
+\vspace{\baselineskip}
+
+\begin{tabular}[c]{p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}|p{0.5cm}}
+\textbf{\begin{math}R_1\end{math}} & \textbf{\begin{math}G_1\end{math}} & \textbf{\begin{math}B_1\end{math}} & \textbf{\begin{math}R_2\end{math}} & \textbf{\begin{math}G_2\end{math}} & \textbf{\begin{math}B_2\end{math}} & \textbf{\begin{math}R_3\end{math}} & \textbf{\begin{math}G_3\end{math}} & \textbf{\begin{math}B_3\end{math}} 
+\\[1mm] \hline
+6 & 5 & 8 & 7 & 6 & 7 & 11 & 10 & 10  
+\end{tabular}
+\end{center}
+
+\noindent\textbf {\largeЗадание} 
+\vspace{\baselineskip}
+\\
+\large Известно, что среднее время между звонками клиентов составляет \begin{math}T_c\end{math} =
+\begin{math}R_1 + G_1 + B_1\end{math}, секунд, а среднее время обслуживания \begin{math}T_s = R_2\end{math} секунд. Все потоки
+случайных событий считать пуассоновскими. Если все операторы заняты,
+звонок теряется.
+\vspace{\baselineskip}
+\\
+1. Рассмотреть систему без очереди. \\Построить графики от числа операторов:
+вероятности отказа (вплоть до обеспечения отказов менее 1\%);
+математического ожидания числа занятых операторов; коэффициента загрузки
+операторов.
+\vspace{\baselineskip}
+\\
+2. Рассмотреть систему с ограниченной очередью. \\Варьируя число операторов
+(вплоть до числа каналов, соответствующего 1\% отказов в системе без
+очереди), построить семейства графиков от числа мест в очереди: вероятности
+отказа; математического ожидания числа занятых операторов; коэффициента
+загрузки операторов; вероятности существования очереди; математического
+ожидания длины очереди; коэффициента занятости мест в очереди. \\Варьируя
+число место в очереди, построить семейства графиков от числа операторов:
+вероятности отказа; математического ожидания числа занятых операторов;
+коэффициента загрузки операторов; вероятности существования очереди;
+математического ожидания длины очереди; коэффициента занятости мест в
+очереди.
+\vspace{\baselineskip}
+\\
+3. Рассмотреть систему без ограничений на длину очереди. \\Построить графики
+от числа операторов (вплоть до числа каналов, соответствующего 1\% отказов в
+системе без очереди): математического ожидания числа занятых операторов;
+коэффициента загрузки операторов; вероятности существования очереди;
+математического ожидания длины очереди.
+\vspace{\baselineskip}
+\\
+4. Рассмотреть систему без ограничений на длину очереди, учитывающей
+фактор ухода клиентов из очереди (среднее приемлемое время ожидания – \begin{math}T_w = R_3 + G_3 + B_3\end{math} секунд). \\Построить графики от числа операторов (вплоть до числа
+каналов, соответствующего 1\% отказов в системе без очереди):
+математического ожидания числа занятых операторов; коэффициента загрузки
+операторов; вероятности существования очереди; математического ожидания
+длины очереди.
+\newpage
+\noindent\textbf {\largeРешение}
+\vspace{\baselineskip}
+\\
+По условию \begin{math} \lambda = \displaystyle\frac{1}{T_c}, \ \mu = \displaystyle\frac{1}{T_s}, \ \nu = \displaystyle\frac{60}{T_w}\end{math}. Положим \begin{math}\rho = \displaystyle\frac{\lambda}{\mu}, \ \beta = \displaystyle\frac{\nu}{\mu}\end{math}.
+\vspace{\baselineskip}
+\\
+Рассмотрим общий случай, когда в системе имеется \begin{math}n \end{math} операторов, \begin{math}m \end{math} ячеек в очереди. \\ Вероятность того, что все каналы свободны: \begin{math} P_0 = \left(\displaystyle\sum^n_{k=0} \displaystyle\frac{\rho^k}{ k!} + \displaystyle\frac{\rho^{n}}{n!} \cdot\sum^m_{q=1}\displaystyle\frac{\rho^q}{\displaystyle\prod\limits_{j = 1}^qn + j\beta} \right)^{-1}\end{math}. \\Вероятность отказа: \begin{math}P_{n+m} = \displaystyle\frac{\rho^{n}}{n!} \cdot\displaystyle\frac{\rho^m}{\displaystyle\prod\limits_{j = 1}^mn + j\beta} \cdot P_0\end{math}. \\
+Вероятность существования очереди: \begin{math}P_m = \displaystyle\frac{\rho^{n}}{n!} \cdot\sum^{m-1}_{q=1}\displaystyle\frac{\rho^q}{\displaystyle\prod\limits_{j = 1}^qn + j\beta} \cdot P_0\end{math}.\\
+Математическое ожидание числа занятых операторов: \begin{math}E_n = \displaystyle\sum_{k = 1}^n P_k \cdot k  + \displaystyle\sum_{j = 1}^m P_{n+1} \cdot n \end{math}. \\
+Математическое ожидание длины очереди: \begin{math}E_m = \displaystyle\sum_{k = 1}^m P_{n+1} \cdot k \end{math}. \\
+Коэффициент загрузки операторов \begin{math}K_o = \displaystyle\frac{E_n}{n}\end{math}.
+Коэффициент занятости очереди \begin{math}K_q = \displaystyle\frac{E_m}{m}\end{math}.
+\vspace{\baselineskip}
+\\Решим задание, рассматривая каждую из задач как частный случай, с помощью предельных переходов (в случае бесконечных очередей) будем находить нужные показатели.
+\vspace{\baselineskip}
+\\
+1. Рассмотрим систему без очереди: \begin{math}M_{\lambda}|M_{\mu}|n|0\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F-]}
+    \xymatrix {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &S_3 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_4 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{4\mu}
+    &S_5 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{5\mu}
+    &S_6 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{6\mu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{7\mu}
+    &S_n \ar@/^/[l]^{n\mu}
+    }
+\vspace{\baselineskip}
+\\
+Относиельная пропускная способность \begin{math}Q = 1 - P_n\end{math}, абсолютная пропускная способность \begin{math}A = \lambda \cdot Q\end{math}. Математическое ожидание числа занятых операторов \begin{math}E_n = \displaystyle\frac{A}{\mu}=\displaystyle\frac{\lambda \cdot Q}{\mu} = \rho \cdot (1 - P_n)\end{math}.
+\vspace{\baselineskip}
+\\
+2. Рассмотрим систему с ограниченной очередью:
+\begin{math}M_{\lambda}|M_{\mu}|n|m\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F-]}
+    \xymatrix  {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_n \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+1} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+2} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+m} \ar@/^/[l]^{n\mu}
+    }
+\vspace{\baselineskip}
+\\
+Вероятность существования очереди \begin{math}P_m  = \displaystyle\frac{\rho^n}{n!} \cdot \displaystyle\frac{1 - \rho^m \cdot n^{-m}}{1 - \rho \cdot n^{-1}} \cdot P_0\end{math}. Математическое ожидание длины очереди \begin{math}E_m  = \displaystyle\frac{\rho^{n+1}}{n \cdot n!} \cdot \displaystyle\frac{(1 - \rho^m \cdot n^{-m}) \cdot [1 + m \cdot (1 -\rho \cdot n^{-1}) ] }{(1 - \rho \cdot n^{-1})^2} \cdot P_0\end{math}.
+\vspace{\baselineskip}
+\\
+3. Рассмотрим систему без ограничений на длину очереди:
+\begin{math}M_{\lambda}|M_{\mu}|n|\infty\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F-]}
+    \xymatrix  {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_n \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+1} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+m} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &... \ar@/^/[l]^{n\mu}
+    }
+\vspace{\baselineskip}
+\\
+Вероятность отказа \begin{math}P_n = 0\end{math}, тогда \begin{math}Q = 1, \ A = \lambda, \ E_n = \rho, \ K_n = \displaystyle\frac{E_n}{n}\end{math}. Формула для \begin{math}P_0\end{math} получается при предельном переходе \begin{math}m \mapsto \infty\end{math} для \begin{math}P_0\end{math} из предыдущего пункта, то есть \begin{math} P_0 = \left(\displaystyle\sum^n_{k=0} \displaystyle\frac{\rho^k}{ k!} + \displaystyle\frac{\rho^{n}}{ n!} \cdot\displaystyle\frac{1 }{n  - \rho} \right)^{-1}\end{math} (бесконечно убывающая геометрическая прогрессия). Вероятность существования очереди \begin{math}P_m = \displaystyle\frac{\rho^n}{(n-1)!} \cdot \displaystyle\frac{1}{n - \rho} \cdot P_0\end{math}. Математическое ожидание длины очереди \begin{math}E_m = \displaystyle\frac{\rho^{n+1}}{(n-1)!} \cdot \displaystyle\frac{1}{(n - \rho)^2} \cdot P_0\end{math}.
+\vspace{\baselineskip}
+\\
+4. Рассмотрим систему без ограничений на длину очереди, учитывающей
+фактор ухода клиентов из очереди: \begin{math}M_{\lambda}|M_{\mu}|n|\infty_\nu\end{math}
+\vspace{\baselineskip}
+\\
+\entrymodifiers={+++[o][F]}
+    \xymatrix  {
+    S_0  \ar@/^/[r]^{\lambda} 
+    &S_1 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{\mu}
+    &S_2 \ar@/^/[r]^{\lambda} \ar@/^/[l]^{2\mu}  
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{3\mu}
+    &S_n \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu}
+    &S_{n+1} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu + \nu}
+    &... \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu + 2\nu}
+    &S_{n+m} \ar@/^/[r]^{\lambda} \ar@/^/[l]^{n\mu + m\nu}
+    &... \ar@/^/[l]^{ \ \ \ n\mu + (m +1) \nu}
+    }
+\vspace{\baselineskip}
+\\
+\begin{math} P_0 = \displaystyle\lim_{m \to \infty} \left(\sum^n_{k=0} \displaystyle\frac{\rho^k}{ k!} + \displaystyle\frac{\rho^{n}}{n!} \cdot\sum^m_{q=1}\displaystyle\frac{\rho^q}{\displaystyle\prod\limits_{j = 1}^qn + j\beta} \right)^{-1}\end{math}. 
+\end{document}
